@@ -1,5 +1,5 @@
-// data/flowers.js
-module.exports = [
+
+const categories = [
     {
         id: 'budget',
         name: {
@@ -16,7 +16,7 @@ module.exports = [
             en: 'Affordable and beautiful options to brighten any day.',
             ru: 'Доступные и красивые варианты для поднятия настроения.'
         },
-        imagePath: './images/budget_bouquet.jpg' // Example image, update as needed
+        imagePath: '../images/IMG_9123.jpg' // Example image, update as needed
     },
     {
         id: 'standard',
@@ -34,7 +34,7 @@ module.exports = [
             en: 'Convenient and stylish bouquets for everyday and special occasions.',
             ru: 'Удобные и стильные букеты для повседневных и особых случаев.'
         },
-        imagePath: './images/standard_bouquet.jpg' // Example image, update as needed
+        imagePath: '../images/IMG_8720.jpg' // Example image, update as needed
     },
     {
         id: 'premium',
@@ -52,7 +52,7 @@ module.exports = [
             en: 'Exquisite and unique compositions to make every moment unforgettable.',
             ru: 'Изысканные и уникальные композиции, чтобы сделать каждый момент незабываемым.'
         },
-        imagePath: './images/premium_bouquet.jpg' // Example image, update as needed
+        imagePath: '../images/IMG_8854.jpg' // Example image, update as needed
     },
     {
         id: 'luxe',
@@ -63,13 +63,15 @@ module.exports = [
         },
         priceRange: {
             min: 40000,
-            max: null // 40000+ means no upper limit
+            max: `40000+ `// 40000+ means no upper limit
         },
         description: {
             hy: 'Շքեղ և էքսկլյուզիվ դիզայն՝ ամենաբարձր ճաշակի համար։',
             en: 'Luxurious and exclusive designs for the most discerning taste.',
             ru: 'Роскошные и эксклюзивные дизайны для самого взыскательного вкуса.'
         },
-        imagePath: './images/luxury_bouquet.jpg' // Example image, update as needed
+        imagePath: '../images/IMG_8813.jpg' // Example image, update as needed
     }
 ];
+
+module.exports = categories;

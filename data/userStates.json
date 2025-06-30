@@ -1,0 +1,24 @@
+{
+  "1503741641": {
+    "language": "hy",
+    "step": "WAITING_FOR_PHONE",
+    "selectedCategory": {
+      "id": "standard",
+      "name": "Ստանդարտ Ծաղկեփնջեր",
+      "priceRange": {
+        "min": 15000,
+        "max": 24999
+      },
+      "description": {
+        "hy": "Հարմարավետ և նորաձև ծաղկեփնջեր՝ առօրյա և հատուկ առիթների համար։",
+        "en": "Convenient and stylish bouquets for everyday and special occasions.",
+        "ru": "Удобные и стильные букеты для повседневных и особых случаев."
+      },
+      "imagePath": "../images/standard_bouquet.jpg"
+    },
+    "quantity": 1,
+    "deliveryDate": "2025-06-28T20:00:00.000Z",
+    "deliveryTime": "11:00",
+    "address": "Start / Սկսել"
+  }
+}
