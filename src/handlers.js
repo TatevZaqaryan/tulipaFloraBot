@@ -149,7 +149,7 @@ async function handleCallbackQuery(bot, callbackQuery) {
                     [{ text: _texts.mainMenu, callback_data: 'back_to_start' }]
                 ];
                 await bot.sendMessage(chatId,
-                    _texts.contactUsContent(sanitizedPhone) + `\n\n${_texts.errorOccurred}`,
+                    _texts.contactUsContent(sanitizedPhone) ,
                     {
                         parse_mode: 'Markdown',
                         reply_markup: { inline_keyboard: inlineKeyboard }
