@@ -9,8 +9,8 @@ const Order = require('../models/Order');
 const userStates = {};
 
 // Admin configuration
-const ADMIN_CHAT_ID = '1503741641'; // Admin's Telegram chat ID
-const ADMIN_LANGUAGE = 'hy'; // Default to Armenian; can be 'ru' or 'en'
+const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '1503741641';
+const ADMIN_LANGUAGE = 'hy';
 
 function handleStartCommand(bot, msg) {
     const chatId = msg.chat.id;
