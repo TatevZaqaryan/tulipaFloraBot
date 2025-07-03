@@ -306,6 +306,22 @@ async function handleCallbackQuery(bot, callbackQuery) {
                     caption: texts[ADMIN_LANGUAGE].paymentScreenshotCaption,
                     parse_mode: 'Markdown'
                 });
+
+                const order = new Order({
+                    userId: userId,
+                    username: callbackQuery.from.username,
+                    firstName: callbackQuery.from.first_name,
+                    lastName: callbackQuery.from.last_name,
+                    category: finalOrder.selectedCategory,
+                    quantity: finalOrder.quantity,
+                    deliveryDate: finalOrder.deliveryDate,
+                    deliveryTime: finalOrder.deliveryTime,
+                    cardMessage: finalOrder.cardMessage,
+                    address: finalOrder.address,
+                    phone: finalOrder.phone,
+                });
+
+                await order.save();
             }
         } catch (error) {
             console.error('Error sending admin notification:', error.message);
@@ -321,22 +337,6 @@ async function handleCallbackQuery(bot, callbackQuery) {
             phone: finalOrder.phone,
             paymentScreenshot: finalOrder.paymentScreenshot
         });
-
-        const order = new Order({
-            userId: userId,
-            username: callbackQuery.from.username,
-            firstName: callbackQuery.from.first_name,
-            lastName: callbackQuery.from.last_name,
-            category: finalOrder.selectedCategory,
-            quantity: finalOrder.quantity,
-            deliveryDate: finalOrder.deliveryDate,
-            deliveryTime: finalOrder.deliveryTime,
-            cardMessage: finalOrder.cardMessage,
-            address: finalOrder.address,
-            phone: finalOrder.phone,
-        });
-
-        await order.save();
 
         bot.sendMessage(chatId, _texts.orderConfirmed, { parse_mode: 'Markdown' });
         delete userStates[userId];

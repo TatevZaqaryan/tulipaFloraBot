@@ -3,20 +3,20 @@ version: '3.8'
 services:
   bot:
     build: .
-    container_name: booking-bot
+    container_name: order-bot
     restart: always
     env_file: .env
     depends_on:
       - mongo
     networks:
-      - bot-net
+      - bot-net-order
     # Remove the volumes mapping for production
     # volumes:
     #   - .:/app
 
   mongo:
     image: mongo:7.0
-    container_name: mongo-db
+    container_name: mongo-db-order
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -26,11 +26,17 @@ services:
     volumes:
       - mongo-data:/data/db
     networks:
-      - bot-net
+      - bot-net-order
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 volumes:
   mongo-data:
 
 networks:
-  bot-net:
+  bot-net-order:
     driver: bridge

@@ -16,7 +16,7 @@ const categories = [
             en: 'Affordable and beautiful options to brighten any day.',
             ru: 'Доступные и красивые варианты для поднятия настроения.'
         },
-        imagePath: '../images/IMG_9123.jpg' // Example image, update as needed
+        imagePath: 'https://raw.githubusercontent.com/TatevZaqaryan/tulipaFloraBot/refs/heads/main/images/IMG_9123.jpg' // Example image, update as needed
     },
     {
         id: 'standard',
@@ -34,7 +34,7 @@ const categories = [
             en: 'Convenient and stylish bouquets for everyday and special occasions.',
             ru: 'Удобные и стильные букеты для повседневных и особых случаев.'
         },
-        imagePath: '../images/IMG_8720.jpg' // Example image, update as needed
+        imagePath: 'https://raw.githubusercontent.com/TatevZaqaryan/tulipaFloraBot/refs/heads/main/images/IMG_8720.jpg' // Example image, update as needed
     },
     {
         id: 'premium',
@@ -52,7 +52,7 @@ const categories = [
             en: 'Exquisite and unique compositions to make every moment unforgettable.',
             ru: 'Изысканные и уникальные композиции, чтобы сделать каждый момент незабываемым.'
         },
-        imagePath: '../images/IMG_8854.jpg' // Example image, update as needed
+        imagePath: 'https://raw.githubusercontent.com/TatevZaqaryan/tulipaFloraBot/refs/heads/main/images/IMG_8854.jpg' // Example image, update as needed
     },
     {
         id: 'luxe',
@@ -70,7 +70,7 @@ const categories = [
             en: 'Luxurious and exclusive designs for the most discerning taste.',
             ru: 'Роскошные и эксклюзивные дизайны для самого взыскательного вкуса.'
         },
-        imagePath: '../images/IMG_8813.jpg' // Example image, update as needed
+        imagePath: 'https://raw.githubusercontent.com/TatevZaqaryan/tulipaFloraBot/refs/heads/main/images/IMG_8813.jpg' // Example image, update as needed
     }
 ];
 

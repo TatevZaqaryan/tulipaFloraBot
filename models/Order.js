@@ -1,5 +1,25 @@
 const mongoose = require('mongoose');
 
+const descriptionSchema = new mongoose.Schema({
+    hy: { type: String },
+    en: { type: String },
+    ru: { type: String }
+}, { _id: false }); // Do not create an _id for this subdocument
+
+const priceRangeSchema = new mongoose.Schema({
+    min: { type: Number },
+    max: { type: mongoose.Schema.Types.Mixed } // Use Mixed if it can be string or number
+}, { _id: false });
+
+const categorySchema = new mongoose.Schema({
+    id: { type: String, required: true },
+    name: { type: String, required: true },
+    priceRange: { type: priceRangeSchema },
+    description: { type: descriptionSchema },
+    imagePath: { type: String }
+}, { _id: false }); // Do not create an _id for this subdocument
+
+
 const orderSchema = new mongoose.Schema({
     userId: {
         type: Number,
@@ -18,15 +38,15 @@ const orderSchema = new mongoose.Schema({
         default: null
     },
     category: {
-        type: String,
-        required: false
+        type: categorySchema, // Reference the new category schema
+        required: false // Set to true if a category is always required
     },
     quantity: {
-        type: String,
+        type: String, // Consider if this should be a Number
         required: false
     },
     deliveryDate: {
-        type: String,
+        type: Date, // Change to Date type to store actual Date objects
         required: false
     },
     deliveryTime: {
@@ -55,9 +75,8 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
-// Index for efficient queries
-orderSchema.index({ userId: 1, date: 1 });
-orderSchema.index({ date: 1, time: 1 });
+orderSchema.index({ userId: 1, deliveryDate: 1 }); // Changed from 'date' to 'deliveryDate'
+orderSchema.index({ deliveryDate: 1, deliveryTime: 1 }); // Changed from 'date' to 'deliveryDate'
 
 // Update the updatedAt field before saving
 orderSchema.pre('save', function(next) {

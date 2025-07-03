@@ -3,7 +3,11 @@ const TelegramBot = require('node-telegram-bot-api');
 const handlers = require('./handlers');
 const { handleCallbackQuery, userStates } = require('./handlers');
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+const connectDB = require('../config/db');
 
+
+// Connect to MongoDB
+connectDB();
 bot.onText(/\/start/, (msg) => handlers.handleStartCommand(bot, msg));
 bot.onText(/\/help/, (msg) => handlers.handleHelpCommand(bot, msg));
 bot.onText(/\/testnotify/, (msg) => handlers.handleTestNotifyCommand(bot, msg));
