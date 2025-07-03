@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: booking-bot
+    restart: always
+    env_file: .env
+    depends_on:
+      - mongo
+    networks:
+      - bot-net
+    # Remove the volumes mapping for production
+    # volumes:
+    #   - .:/app
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongo-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27019:27017"  # Optional: for external access
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - bot-net
+
+volumes:
+  mongo-data:
+
+networks:
+  bot-net:
+    driver: bridge

@@ -4,6 +4,7 @@ const shopInfo = require('../data/shopInfo');
 const { STEPS, texts } = require('./constants');
 const { getLocalizedText, getCategoryName, getCategoryDescription } = require('./utils');
 const { mainMenuReplyKeyboard, getCalendarKeyboard, getTimesKeyboard } = require('./keyboards');
+const Order = require('../models/Order');
 
 const userStates = {};
 
@@ -320,6 +321,23 @@ async function handleCallbackQuery(bot, callbackQuery) {
             phone: finalOrder.phone,
             paymentScreenshot: finalOrder.paymentScreenshot
         });
+
+        const order = new Order({
+            userId: userId,
+            username: callbackQuery.from.username,
+            firstName: callbackQuery.from.first_name,
+            lastName: callbackQuery.from.last_name,
+            category: finalOrder.selectedCategory,
+            quantity: finalOrder.quantity,
+            deliveryDate: finalOrder.deliveryDate,
+            deliveryTime: finalOrder.deliveryTime,
+            cardMessage: finalOrder.cardMessage,
+            address: finalOrder.address,
+            phone: finalOrder.phone,
+        });
+
+        await order.save();
+
         bot.sendMessage(chatId, _texts.orderConfirmed, { parse_mode: 'Markdown' });
         delete userStates[userId];
 
